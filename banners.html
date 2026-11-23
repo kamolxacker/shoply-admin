@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin panel — Reklama bannerlari</title>
+<link rel="icon" type="icon" href="./images/icons/icon.svg">
+<link rel="stylesheet" href="css/shared/base.css">
+<link rel="stylesheet" href="css/admin.css">
+<link rel="stylesheet" href="css/banners.css">
+</head>
+<body>
+
+<!-- admin shell (sidebar + asosiy joylashuv) -->
+<div id="admin-app"></div>
+
+<template id="content-template">
+  <p class="admin-lead">
+    Bu yerdagi bannerlar bosh sahifadagi katta slayder (hero) va ikkita kichik reklama
+    (promo) blokini boshqaradi. O'zgartirishlar darhol saytda ko'rinadi.
+  </p>
+
+  <!-- hero slaydlar -->
+  <div class="admin-toolbar">
+    <h2 class="admin-h2">Hero slaydlar (bosh sahifadagi katta banner)</h2>
+    <button type="button" class="btn btn--primary btn--sm" data-add="hero">+ Slayd qo'shish</button>
+  </div>
+  <div id="hero-banners-mount" class="admin-mb-32"></div>
+  <!-- /hero slaydlar -->
+
+  <!-- promo bannerlar -->
+  <div class="admin-toolbar">
+    <h2 class="admin-h2">Promo bannerlar (ikkita kichik blok)</h2>
+    <button type="button" class="btn btn--primary btn--sm" data-add="promo">+ Banner qo'shish</button>
+  </div>
+  <div id="promo-banners-mount"></div>
+  <!-- /promo bannerlar -->
+</template>
+
+<!-- banner qo'shish/tahrirlash oynasi -->
+<div class="modal" data-banner-modal>
+  <div class="modal__box admin-modal--sm">
+    <button type="button" class="modal__close" data-modal-close aria-label="Yopish">✕</button>
+    <h2 class="modal__title" data-modal-title>Banner qo'shish</h2>
+
+    <form data-banner-form>
+      <input type="hidden" data-f-type>
+      <div class="form-field">
+        <label class="form-field__label">Fon rasmi (ixtiyoriy — backendga saqlanadi)</label>
+        <input type="file" class="form-field__input" accept="image/jpeg,image/png,image/webp" data-f-bg-file>
+        <div class="admin-img-upload">
+          <img class="admin-img-upload__preview admin-img-upload__preview--wide" data-f-bg-preview alt="" hidden>
+          <button type="button" class="btn btn--ghost btn--sm" data-f-bg-clear>Fonni olib tashlash</button>
+          <span class="admin-img-upload__hint" data-f-bg-hint></span>
+        </div>
+      </div>
+      <div class="form-field">
+        <label class="form-field__label">Ustki yorliq (eyebrow) — faqat hero uchun</label>
+        <input type="text" class="form-field__input" data-f-eyebrow>
+      </div>
+      <div class="form-field">
+        <label class="form-field__label">Sarlavha *</label>
+        <input type="text" class="form-field__input" required data-f-title>
+      </div>
+      <div class="form-field">
+        <label class="form-field__label">Matn</label>
+        <textarea class="form-field__input" rows="2" data-f-text></textarea>
+      </div>
+      <div class="admin-form__grid">
+        <div class="form-field">
+          <label class="form-field__label">Tugma matni</label>
+          <input type="text" class="form-field__input" data-f-cta-text placeholder="Xarid qilish">
+        </div>
+        <div class="form-field">
+          <label class="form-field__label">Havola</label>
+          <input type="text" class="form-field__input" data-f-link placeholder="catalog.html">
+        </div>
+        <div class="form-field">
+          <label class="form-field__label">Rang varianti</label>
+          <select class="form-field__input" data-f-variant></select>
+        </div>
+        <div class="form-field" data-price-tag-field>
+          <label class="form-field__label">Narx belgisi (faqat hero)</label>
+          <input type="text" class="form-field__input" data-f-price-tag placeholder="Chegirmalar 09:00 dan">
+        </div>
+      </div>
+      <label class="admin-form__checkbox admin-mb-16">
+        <input type="checkbox" data-f-active checked> Faol (saytda ko'rinsin)
+      </label>
+      <div class="form-field__error" data-form-error></div>
+      <button type="submit" class="btn btn--primary btn--block btn--lg">Saqlash</button>
+    </form>
+  </div>
+</div>
+<!-- /banner qo'shish/tahrirlash oynasi -->
+
+<script src="js/shared/config.js"></script>
+<script src="js/shared/api.js"></script>
+<script src="js/shared/i18n.js"></script>
+<script src="js/shared/utils.js"></script>
+<script src="js/admin-shell.js"></script>
+<script src="js/admin-banners.js"></script>
+</body>
+</html>

@@ -1,0 +1,37 @@
+/* login.css — admin login sahifasi uchun alohida stillar. */
+
+
+/* admin-login (kirish sahifasi) */
+.admin-login{
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.admin-login__box{
+  width: 100%;
+  max-width: 380px;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: 34px;
+  box-shadow: var(--shadow-lg);
+}
+
+.admin-login__logo{
+  display: flex; align-items: center; gap: 10px;
+  font-family: var(--font-display); font-weight: 700; font-size: 20px;
+  color: var(--color-primary-dark); margin-bottom: 22px;
+}
+
+.admin-login__title{ font-size: 22px; margin-bottom: 6px; }
+
+.admin-login__subtitle{ font-size: 13.5px; color: var(--color-text-soft); margin-bottom: 24px; }
+
+.admin-login__hint{
+  margin-top: 18px; padding: 12px 14px;
+  background: var(--color-primary-light); color: var(--color-primary-dark);
+  border-radius: var(--radius-sm); font-size: 12.5px; line-height: 1.6;
+}

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin panel — Savol-javoblar</title>
+<link rel="icon" type="icon" href="./images/icons/icon.svg">
+<link rel="stylesheet" href="css/shared/base.css">
+<link rel="stylesheet" href="css/admin.css">
+<link rel="stylesheet" href="css/inquiries.css">
+</head>
+<body>
+
+<!-- admin shell (sidebar + asosiy joylashuv) -->
+<div id="admin-app"></div>
+
+<template id="content-template">
+  <div class="admin-toolbar">
+    <select class="catalog__sort-select" id="status-filter">
+      <option value="">Barchasi</option>
+      <option value="new">Faqat javobsizlar</option>
+      <option value="answered">Faqat javob berilganlar</option>
+    </select>
+  </div>
+  <div id="inquiries-mount"></div>
+</template>
+
+<!-- javob yozish oynasi -->
+<div class="modal" data-reply-modal>
+  <div class="modal__box admin-modal--sm">
+    <button type="button" class="modal__close" data-modal-close aria-label="Yopish">✕</button>
+    <h2 class="modal__title">So'rovga javob</h2>
+    <div class="admin-preview" data-inquiry-preview></div>
+
+    <form data-reply-form>
+      <div class="form-field">
+        <label class="form-field__label">Javobingiz *</label>
+        <textarea class="form-field__input" rows="4" required data-f-reply></textarea>
+        <div class="form-field__error" data-form-error></div>
+      </div>
+      <button type="submit" class="btn btn--primary btn--block btn--lg">Javobni yuborish</button>
+    </form>
+  </div>
+</div>
+<!-- /javob yozish oynasi -->
+
+<script src="js/shared/config.js"></script>
+<script src="js/shared/api.js"></script>
+<script src="js/shared/i18n.js"></script>
+<script src="js/shared/utils.js"></script>
+<script src="js/admin-shell.js"></script>
+<script src="js/admin-inquiries.js"></script>
+</body>
+</html>

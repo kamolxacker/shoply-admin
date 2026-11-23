@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin panel — Mahsulotlar</title>
+<link rel="icon" type="icon" href="./images/icons/icon.svg">
+<link rel="stylesheet" href="css/shared/base.css">
+<link rel="stylesheet" href="css/admin.css">
+<link rel="stylesheet" href="css/products.css">
+</head>
+<body>
+
+<!-- admin shell (sidebar + asosiy joylashuv) shu yerga render bo'ladi -->
+<div id="admin-app"></div>
+
+<!-- statistika + mahsulotlar jadvali shu yerga render bo'ladi -->
+<template id="content-template">
+  <!-- statistika kartalari -->
+  <div class="admin-stats" id="admin-stats-mount"></div>
+  <!-- /statistika -->
+
+  <!-- qidiruv + qo'shish tugmasi -->
+  <div class="admin-toolbar">
+    <input type="text" class="admin-toolbar__search" id="admin-search" placeholder="Mahsulot qidirish...">
+    <button type="button" class="btn btn--primary" id="btn-add-product">+ Mahsulot qo'shish</button>
+  </div>
+  <!-- /qidiruv -->
+
+  <!-- mahsulotlar jadvali -->
+  <div class="admin-scroll-x">
+    <table class="admin-table">
+      <thead>
+        <tr>
+          <th>Mahsulot</th>
+          <th>Kategoriya</th>
+          <th>Narx</th>
+          <th>Reyting</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody id="admin-products-tbody"></tbody>
+    </table>
+  </div>
+  <div class="catalog__chips admin-mt-16" id="admin-pagination"></div>
+  <!-- /mahsulotlar jadvali -->
+</template>
+
+<!-- mahsulot qo'shish/tahrirlash oynasi -->
+<div class="modal" data-product-modal>
+  <div class="modal__box admin-modal--md">
+    <button type="button" class="modal__close" data-modal-close aria-label="Yopish">✕</button>
+    <h2 class="modal__title" data-modal-title>Mahsulot qo'shish</h2>
+    <p class="modal__subtitle">Barcha maydonlarni to'ldiring</p>
+
+    <form data-product-form>
+      <div class="admin-form__grid">
+        <div class="form-field">
+          <label class="form-field__label">Nomi *</label>
+          <input type="text" class="form-field__input" required data-f-name>
+        </div>
+        <div class="form-field">
+          <label class="form-field__label">Brend *</label>
+          <input type="text" class="form-field__input" required data-f-brand>
+        </div>
+        <div class="form-field">
+          <label class="form-field__label">Kategoriya *</label>
+          <select class="form-field__input" required data-f-cat></select>
+        </div>
+        <div class="form-field admin-gallery-field">
+          <label class="form-field__label">Mahsulot rasmlari (istalgancha; birinchisi asosiy)</label>
+          <input type="file" multiple class="form-field__input" accept="image/jpeg,image/png,image/webp" data-f-img-file>
+          <div class="admin-gallery" data-gallery></div>
+          <span class="admin-img-upload__hint" data-f-img-hint>Bir yoki bir nechta rasm tanlang — ular avtomatik saqlanadi</span>
+        </div>
+<div class="form-field">
+          <label class="form-field__label">Narx (so'm) *</label>
+          <input type="number" class="form-field__input" required min="1" data-f-price>
+        </div>
+        <div class="form-field">
+          <label class="form-field__label">Eski narx (chegirma uchun)</label>
+          <input type="number" class="form-field__input" min="1" data-f-old-price>
+        </div>
+        <div class="form-field">
+          <label class="form-field__label">Reyting (1-5)</label>
+          <input type="number" class="form-field__input" min="1" max="5" step="0.1" data-f-rating>
+        </div>
+        <div class="form-field">
+          <label class="form-field__label">Sharhlar soni</label>
+          <input type="number" class="form-field__input" min="0" data-f-review-count>
+        </div>
+      </div>
+
+      <div class="admin-form__checkboxes">
+        <label class="admin-form__checkbox"><input type="checkbox" data-f-is-new> Yangi mahsulot</label>
+        <label class="admin-form__checkbox"><input type="checkbox" data-f-free-ship> Bepul yetkazib berish</label>
+      </div>
+
+      <div class="form-field">
+        <label class="form-field__label">Tavsif</label>
+        <textarea class="form-field__input" rows="3" data-f-description></textarea>
+      </div>
+
+      <div class="form-field admin-form__row-wide">
+        <label class="form-field__label">Xususiyatlar (spec)</label>
+        <div id="specs-rows"></div>
+        <button type="button" class="admin-form__add-spec" id="btn-add-spec">+ Xususiyat qo'shish</button>
+      </div>
+
+      <div class="form-field__error" data-form-error></div>
+      <button type="submit" class="btn btn--primary btn--block btn--lg">Saqlash</button>
+    </form>
+  </div>
+</div>
+<!-- /mahsulot qo'shish/tahrirlash oynasi -->
+
+<script src="js/shared/config.js"></script>
+<script src="js/shared/api.js"></script>
+<script src="js/shared/i18n.js"></script>
+<script src="js/shared/utils.js"></script>
+<script src="js/admin-shell.js"></script>
+<script src="js/admin-products.js"></script>
+</body>
+</html>

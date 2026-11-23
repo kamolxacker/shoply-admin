@@ -1,0 +1,184 @@
+/* ==========================================================================
+   admin.css — Admin panel uchun qo'shimcha stillar (BEM uslubida).
+   Asosiy dizayn tokenlari va komponentlar (btn, form-field, modal, toast,
+   badge, price, empty-state) umumiy css/base.css dan qayta ishlatiladi.
+   ========================================================================== */
+
+
+body{ background: var(--color-bg); }
+
+
+/* admin-shell (sidebar + asosiy joylashuv) */
+.admin-shell{ display: grid; grid-template-columns: 240px 1fr; min-height: 100vh; }
+
+.admin-shell__sidebar{
+  background: var(--color-primary-darker);
+  color: rgba(255,255,255,0.75);
+  padding: 22px 14px;
+  display: flex; flex-direction: column;
+}
+
+.admin-shell__logo{
+  display: flex; align-items: center; gap: 10px;
+  font-family: var(--font-display); font-weight: 700; font-size: 17px;
+  color: #fff; padding: 8px 10px 24px;
+}
+
+.admin-shell__nav{ display: flex; flex-direction: column; gap: 4px; flex: 1; }
+
+.admin-shell__nav-link{
+  display: flex; align-items: center; gap: 10px;
+  padding: 11px 12px; border-radius: var(--radius-sm);
+  font-size: 14px; font-weight: 600;
+  color: rgba(255,255,255,0.75);
+}
+
+.admin-shell__nav-link:hover{ background: rgba(255,255,255,0.08); color: #fff; }
+
+.admin-shell__nav-link--active{ background: var(--color-primary); color: #fff; }
+
+.admin-shell__logout{
+  margin-top: auto; padding: 11px 12px; border-radius: var(--radius-sm);
+  font-size: 13.5px; font-weight: 600; color: rgba(255,255,255,0.6);
+  background: none; border: none; text-align: left; width: 100%;
+}
+
+.admin-shell__logout:hover{ background: rgba(255,255,255,0.08); color: #fff; }
+
+.admin-shell__main{ padding: 28px 32px; max-width: 1200px; }
+
+.admin-shell__header{
+  display: flex; align-items: center; justify-content: space-between;
+  margin-bottom: 24px; flex-wrap: wrap; gap: 12px;
+}
+
+.admin-shell__title{ font-size: 24px; font-weight: 700; color: var(--color-primary-darker); }
+
+.admin-shell__admin-name{ font-size: 13.5px; color: var(--color-text-soft); }
+
+
+/* admin-toolbar (qidiruv + qo'shish tugmasi) */
+.admin-toolbar{ display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 16px; flex-wrap: wrap; }
+
+
+/* admin-table (mahsulotlar ro'yxati) */
+.admin-table{
+  width: 100%; border-collapse: collapse;
+  background: var(--color-surface); border: 1px solid var(--color-border);
+  border-radius: var(--radius-md); overflow: hidden;
+}
+
+.admin-table th, .admin-table td{ padding: 12px 14px; text-align: left; font-size: 13.5px; border-bottom: 1px solid var(--color-border); }
+
+.admin-table th{ background: var(--color-bg); color: var(--color-text-soft); font-weight: 700; font-size: 12px; text-transform: uppercase; letter-spacing: 0.03em; }
+
+.admin-table tr:last-child td{ border-bottom: none; }
+
+.admin-table__actions{ display: flex; gap: 6px; }
+
+.admin-table__action-btn{
+  width: 32px; height: 32px; border-radius: var(--radius-sm); border: none;
+  background: var(--color-bg); color: var(--color-text-soft); display: flex; align-items: center; justify-content: center;
+}
+
+.admin-table__action-btn:hover{ background: var(--color-primary-light); color: var(--color-primary-dark); }
+
+.admin-table__action-btn--danger:hover{ background: var(--color-coral-light); color: var(--color-coral); }
+
+
+/* admin-form (mahsulot qo'shish/tahrirlash formasi — modal ichida) */
+.admin-form__grid{ display: grid; grid-template-columns: 1fr 1fr; gap: 0 16px; }
+
+.admin-form__checkbox{ display: flex; align-items: center; gap: 7px; font-size: 13.5px; color: var(--color-text-soft); }
+
+
+/* telefon */
+@media (max-width: 860px) {
+
+  .admin-shell{ grid-template-columns: 1fr; }
+
+  .admin-shell__sidebar{ flex-direction: row; align-items: center; overflow-x: auto; }
+
+  .admin-shell__nav{ flex-direction: row; }
+
+  .admin-shell__logout{ margin-top: 0; }
+
+  .admin-form__grid{ grid-template-columns: 1fr; }
+
+  .admin-shell__main{ padding: 18px; }
+}
+
+
+/* ---- Admin sahifalar uchun yordamchi klasslar (inline style o'rniga) ---- */
+.admin-lead { color: var(--color-text-soft); font-size: 13.5px; margin-bottom: 18px; }
+
+.admin-mb-16 { margin-bottom: 16px; }
+
+.admin-mb-20 { margin-bottom: 20px; }
+
+.admin-modal--sm { max-width: 560px; }
+
+/* ---- Mahsulot rasmi yuklash (admin forma) ---- */
+.admin-img-upload { display: flex; align-items: center; gap: 12px; margin-top: 8px; }
+.admin-img-upload__preview {
+  width: 84px; height: 84px; object-fit: cover; border-radius: var(--radius-sm);
+  border: 1px solid var(--color-border); background: var(--color-bg);
+}
+.admin-img-upload__hint { font-size: 12px; color: var(--color-text-faint); }
+
+/* ---- Mahsulot galereyasi va banner fon rasmi ---- */
+.admin-gallery { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px; }
+.admin-gallery__item { position: relative; width: 92px; height: 92px; border-radius: var(--radius-sm); overflow: hidden; border: 1px solid var(--color-border); background: var(--color-bg); }
+.admin-gallery__item img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.admin-gallery__badge { position: absolute; left: 4px; bottom: 4px; font-size: 10px; font-weight: 700; background: var(--color-primary); color: #fff; padding: 2px 6px; border-radius: 6px; }
+.admin-gallery__remove { position: absolute; top: 4px; right: 4px; width: 22px; height: 22px; border: 0; border-radius: 50%; background: rgba(0,0,0,.6); color: #fff; cursor: pointer; font-size: 11px; }
+.admin-img-upload__preview--wide { width: 180px; height: 96px; }
+.admin-table-wrap { overflow-x: auto; }
+
+/* ==========================================================================
+   ADMIN SIDEBAR — screenshotdagi tuzilish (oq menyu, binafsha faol element)
+   ========================================================================== */
+.admin-shell { grid-template-columns: 260px 1fr; }
+.admin-shell__sidebar { background: #fff; color: #475569; border-right: 1px solid #eceef3; padding: 14px 12px; display: flex; flex-direction: column; gap: 10px; height: 100vh; position: sticky; top: 0; overflow-y: auto; }
+.admin-shell__brand { display: flex; align-items: center; gap: 10px; padding: 4px 10px 8px; font-weight: 800; font-size: 16px; color: #0f172a; }
+.admin-shell__brand-img { width: 30px; height: 30px; border-radius: 9px; }
+.admin-shell__brand-accent { color: #ff6a00; }
+.admin-shell__brand small { font-size: 11px; color: #94a3b8; font-weight: 700; letter-spacing: .08em; }
+.admin-shell__profile { display: flex; align-items: center; gap: 12px; padding: 12px; border-radius: 16px; background: #f7f8fb; margin: 0 2px 6px; }
+.admin-shell__avatar { width: 40px; height: 40px; border-radius: 50%; background: linear-gradient(135deg,#a78bfa,#6a2cf5); color: #fff; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 14px; flex-shrink: 0; }
+.admin-shell__pname { font-weight: 700; color: #0f172a; font-size: 14px; }
+.admin-shell__prole { font-size: 12px; color: #94a3b8; }
+.admin-shell__nav { display: flex; flex-direction: column; gap: 2px; flex: 1; }
+.admin-shell__section { font-size: 10.5px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: #94a3b8; padding: 16px 12px 6px; }
+.admin-shell__nav-link { display: flex; align-items: center; gap: 12px; padding: 11px 12px; border-radius: 12px; color: #475569; font-size: 14px; font-weight: 500; text-decoration: none; background: transparent; }
+.admin-shell__nav-link:hover { background: #f5f3ff; color: #6a2cf5; }
+.admin-shell__nav-link--active { background: #efe9ff; color: #6a2cf5; font-weight: 700; }
+.admin-shell__icon { width: 18px; height: 18px; flex-shrink: 0; }
+.admin-shell__badge { margin-left: auto; background: #fef3c7; color: #b45309; font-size: 11px; font-weight: 700; padding: 2px 8px; border-radius: 8px; }
+.admin-shell__badge:empty { display: none; }
+.admin-shell__dot { margin-left: auto; width: 7px; height: 7px; border-radius: 50%; background: #f43f5e; }
+.admin-shell__academy { margin: 6px 2px; padding: 14px; border-radius: 16px; background: linear-gradient(135deg,#6a2cf5,#4c1d95); color: #fff; font-size: 12px; }
+.admin-shell__academy-title { font-weight: 700; font-size: 13px; margin-bottom: 6px; }
+.admin-shell__academy p { margin: 0; opacity: .85; }
+.admin-shell__academy-link { display: inline-block; margin-top: 8px; color: #fff; font-weight: 700; text-decoration: underline; }
+.admin-shell__bottom { border-top: 1px solid #eceef3; padding-top: 8px; display: flex; flex-direction: column; gap: 2px; }
+.admin-shell__bottom-btn { display: flex; align-items: center; gap: 12px; width: 100%; border: 0; background: transparent; padding: 10px 12px; border-radius: 12px; color: #475569; font: inherit; font-size: 14px; cursor: pointer; text-align: left; }
+.admin-shell__bottom-btn:hover { background: #f5f3ff; color: #6a2cf5; }
+.admin-shell__bottom-btn svg { width: 18px; height: 18px; }
+.admin-shell--collapsed { grid-template-columns: 76px 1fr; }
+.admin-shell--collapsed .admin-shell__label, .admin-shell--collapsed .admin-shell__section, .admin-shell--collapsed .admin-shell__badge, .admin-shell--collapsed .admin-shell__academy { display: none; }
+.admin-shell--collapsed .admin-shell__nav-link { justify-content: center; }
+.admin-shell--collapsed .admin-shell__bottom-btn { justify-content: center; }
+.admin-shell--collapsed .admin-shell__bottom-btn svg:first-child { transform: rotate(180deg); }
+.admin-shell__main { background: #f6f7fb; }
+.admin-shell__title { color: #0f172a; }
+.admin-shell__header { background: transparent; }
+
+/* ---- bosh sahifa KPI kartalari ---- */
+.kpi-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 14px; margin-bottom: 8px; }
+.kpi-card { background: #fff; border: 1px solid #eceef3; border-radius: 18px; padding: 18px; }
+.kpi-card__label { font-size: 12.5px; color: #64748b; font-weight: 600; }
+.kpi-card__value { font-size: 22px; font-weight: 800; color: #0f172a; margin-top: 8px; font-family: var(--font-mono); }
+.kpi-card__hint { font-size: 12px; color: #94a3b8; margin-top: 4px; }
+.section-soon { background: #fff; border: 1px dashed #d8dce6; border-radius: 18px; padding: 40px; text-align: center; color: #64748b; margin-top: 16px; }
+.section-soon h2 { color: #0f172a; margin: 0 0 8px; }

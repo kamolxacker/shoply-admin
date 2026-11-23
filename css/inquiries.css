@@ -1,0 +1,6 @@
+/* inquiries.css — admin inquiries sahifasi uchun alohida stillar. */
+
+.admin-preview {
+  background: var(--color-bg); border-radius: var(--radius-sm);
+  padding: 14px; margin-bottom: 16px; font-size: 13.5px;
+}

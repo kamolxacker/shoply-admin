@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin panel — Sotuvchilar</title>
+<link rel="icon" type="icon" href="./images/icons/icon.svg">
+<link rel="stylesheet" href="css/shared/base.css">
+<link rel="stylesheet" href="css/admin.css">
+</head>
+<body>
+
+<!-- admin shell (sidebar + asosiy joylashuv) -->
+<div id="admin-app"></div>
+
+<template id="content-template">
+  <p class="admin-lead">
+    Ro'yxatdan o'tgan sotuvchilar, ularning do'konlari, daromadi, komissiyasi va reytingi.
+    Ma'lumotlar sotuvchi kabinetidagi bilan bir xil.
+  </p>
+
+  <div class="admin-toolbar">
+    <h2 class="admin-h2">Sotuvchilar</h2>
+  </div>
+  <div id="sellers-mount"></div>
+
+  <div class="admin-toolbar admin-mt-16">
+    <h2 class="admin-h2">Ilova tayyor bo'lganda xabar berish so'rovlari</h2>
+  </div>
+  <div id="notify-mount"></div>
+</template>
+
+<script src="js/shared/config.js"></script>
+<script src="js/shared/api.js"></script>
+<script src="js/shared/i18n.js"></script>
+<script src="js/shared/utils.js"></script>
+<script src="js/admin-shell.js"></script>
+<script src="js/admin-sellers.js"></script>
+</body>
+</html>
