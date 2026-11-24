@@ -1,67 +1,95 @@
-<!DOCTYPE html>
-<html lang="uz">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Admin panel — Katalog tuzilishi</title>
-<link rel="icon" type="icon" href="./images/icons/icon.svg">
-<link rel="stylesheet" href="css/shared/base.css">
-<link rel="stylesheet" href="css/admin.css">
-<link rel="stylesheet" href="css/catalog.css">
-</head>
-<body>
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin panel — Katalog tuzilishi</title>
+    <link rel="icon" type="icon" href="./images/icons/icon.svg" />
+    <link rel="stylesheet" href="css/shared/base.css" />
+    <link rel="stylesheet" href="css/admin.css" />
+    <link rel="stylesheet" href="css/catalog.css" />
+  </head>
+  <body>
+    <!-- admin shell (sidebar + asosiy joylashuv) -->
+    <div id="admin-app"></div>
 
-<!-- admin shell (sidebar + asosiy joylashuv) -->
-<div id="admin-app"></div>
+    <template id="content-template">
+      <p class="admin-lead">
+        Bu yerda header'dagi "Katalog" tugmasi bosilganda ochiladigan mega-menyu
+        qism-kategoriyalari (guruhlari) boshqariladi. Havolalarni vergul (,)
+        bilan ajratib kiriting.
+      </p>
 
-<template id="content-template">
-  <p class="admin-lead">
-    Bu yerda header'dagi "Katalog" tugmasi bosilganda ochiladigan mega-menyu
-    qism-kategoriyalari (guruhlari) boshqariladi. Havolalarni vergul (,) bilan
-    ajratib kiriting.
-  </p>
-
-  <div class="form-field admin-field-narrow">
-    <label class="form-field__label">Kategoriya tanlang</label>
-    <select class="form-field__input" id="cat-filter"></select>
-  </div>
-
-  <button type="button" class="btn btn--primary btn--sm admin-mb-16" id="btn-add-group">+ Guruh qo'shish</button>
-
-  <div id="groups-mount"></div>
-</template>
-
-<!-- guruh qo'shish/tahrirlash oynasi -->
-<div class="modal" data-group-modal>
-  <div class="modal__box admin-modal--sm">
-    <button type="button" class="modal__close" data-modal-close aria-label="Yopish">✕</button>
-    <h2 class="modal__title" data-modal-title>Guruh qo'shish</h2>
-
-    <form data-group-form>
-      <div class="form-field">
-        <label class="form-field__label">Kategoriya *</label>
-        <select class="form-field__input" required data-f-cat></select>
+      <div class="form-field admin-field-narrow">
+        <label class="form-field__label">Kategoriya tanlang</label>
+        <select class="form-field__input" id="cat-filter"></select>
       </div>
-      <div class="form-field">
-        <label class="form-field__label">Guruh nomi *</label>
-        <input type="text" class="form-field__input" required data-f-title placeholder="Masalan: Telefon va aksessuarlar">
-      </div>
-      <div class="form-field">
-        <label class="form-field__label">Havolalar (vergul bilan ajrating) *</label>
-        <textarea class="form-field__input" rows="3" required data-f-links placeholder="Smartfonlar, Simsiz quloqchinlar, Quvvat banklari"></textarea>
-      </div>
-      <div class="form-field__error" data-form-error></div>
-      <button type="submit" class="btn btn--primary btn--block btn--lg">Saqlash</button>
-    </form>
-  </div>
-</div>
-<!-- /guruh qo'shish/tahrirlash oynasi -->
 
-<script src="js/shared/config.js"></script>
-<script src="js/shared/api.js"></script>
-<script src="js/shared/i18n.js"></script>
-<script src="js/shared/utils.js"></script>
-<script src="js/admin-shell.js"></script>
-<script src="js/admin-catalog.js"></script>
-</body>
+      <button
+        type="button"
+        class="btn btn--primary btn--sm admin-mb-16"
+        id="btn-add-group"
+      >
+        + Guruh qo'shish
+      </button>
+
+      <div id="groups-mount"></div>
+    </template>
+
+    <!-- guruh qo'shish/tahrirlash oynasi -->
+    <div class="modal" data-group-modal>
+      <div class="modal__box admin-modal--sm">
+        <button
+          type="button"
+          class="modal__close"
+          data-modal-close
+          aria-label="Yopish"
+        >
+          ✕
+        </button>
+        <h2 class="modal__title" data-modal-title>Guruh qo'shish</h2>
+
+        <form data-group-form>
+          <div class="form-field">
+            <label class="form-field__label">Kategoriya *</label>
+            <select class="form-field__input" required data-f-cat></select>
+          </div>
+          <div class="form-field">
+            <label class="form-field__label">Guruh nomi *</label>
+            <input
+              type="text"
+              class="form-field__input"
+              required
+              data-f-title
+              placeholder="Masalan: Telefon va aksessuarlar"
+            />
+          </div>
+          <div class="form-field">
+            <label class="form-field__label"
+              >Havolalar (vergul bilan ajrating) *</label
+            >
+            <textarea
+              class="form-field__input"
+              rows="3"
+              required
+              data-f-links
+              placeholder="Smartfonlar, Simsiz quloqchinlar, Quvvat banklari"
+            ></textarea>
+          </div>
+          <div class="form-field__error" data-form-error></div>
+          <button type="submit" class="btn btn--primary btn--block btn--lg">
+            Saqlash
+          </button>
+        </form>
+      </div>
+    </div>
+    <!-- /guruh qo'shish/tahrirlash oynasi -->
+
+    <script src="js/shared/config.js"></script>
+    <script src="js/shared/api.js"></script>
+    <script src="js/shared/i18n.js"></script>
+    <script src="js/shared/utils.js"></script>
+    <script src="js/admin-shell.js"></script>
+    <script src="js/admin-catalog.js"></script>
+  </body>
 </html>

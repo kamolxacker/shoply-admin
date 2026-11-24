@@ -1,50 +1,66 @@
-<!DOCTYPE html>
-<html lang="uz">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Admin panel — Kirish</title>
-<link rel="icon" type="icon" href="./images/icons/icon.svg">
-<link rel="stylesheet" href="css/shared/base.css">
-<link rel="stylesheet" href="css/admin.css">
-<link rel="stylesheet" href="css/login.css">
-</head>
-<body>
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin panel — Kirish</title>
+    <link rel="icon" type="icon" href="./images/icons/icon.svg" />
+    <link rel="stylesheet" href="css/shared/base.css" />
+    <link rel="stylesheet" href="css/admin.css" />
+    <link rel="stylesheet" href="css/login.css" />
+  </head>
+  <body>
+    <!-- admin login -->
+    <div class="admin-login">
+      <div class="admin-login__box">
+        <div class="admin-login__logo">
+          <span class="logo__mark"></span> Sotuv Sayti — Admin
+        </div>
+        <h1 class="admin-login__title">Admin panelga kirish</h1>
+        <p class="admin-login__subtitle">
+          Faqat admin huquqiga ega hisoblar kira oladi
+        </p>
 
-<!-- admin login -->
-<div class="admin-login">
-  <div class="admin-login__box">
-    <div class="admin-login__logo">
-      <span class="logo__mark"></span> Sotuv Sayti — Admin
-    </div>
-    <h1 class="admin-login__title">Admin panelga kirish</h1>
-    <p class="admin-login__subtitle">Faqat admin huquqiga ega hisoblar kira oladi</p>
+        <form data-admin-login-form>
+          <div class="form-field">
+            <label class="form-field__label">Telefon raqam</label>
+            <input
+              type="tel"
+              class="form-field__input"
+              placeholder="+998 90 123 45 67"
+              required
+              data-phone
+            />
+          </div>
+          <div class="form-field">
+            <label class="form-field__label">Parol</label>
+            <input
+              type="password"
+              class="form-field__input"
+              placeholder="••••••••"
+              required
+              data-pass
+            />
+            <div class="form-field__error" data-error></div>
+          </div>
+          <button type="submit" class="btn btn--primary btn--block btn--lg">
+            Kirish
+          </button>
+        </form>
 
-    <form data-admin-login-form>
-      <div class="form-field">
-        <label class="form-field__label">Telefon raqam</label>
-        <input type="tel" class="form-field__input" placeholder="+998 90 123 45 67" required data-phone>
+        <div class="admin-login__hint">
+          Standart admin hisobi: <strong>+998900000000</strong> /
+          <strong>admin1234</strong><br />
+          (production muhitida albatta o'zgartiring)
+        </div>
       </div>
-      <div class="form-field">
-        <label class="form-field__label">Parol</label>
-        <input type="password" class="form-field__input" placeholder="••••••••" required data-pass>
-        <div class="form-field__error" data-error></div>
-      </div>
-      <button type="submit" class="btn btn--primary btn--block btn--lg">Kirish</button>
-    </form>
-
-    <div class="admin-login__hint">
-      Standart admin hisobi: <strong>+998900000000</strong> / <strong>admin1234</strong><br>
-      (production muhitida albatta o'zgartiring)
     </div>
-  </div>
-</div>
-<!-- /admin login -->
+    <!-- /admin login -->
 
-<script src="js/shared/config.js"></script>
-<script src="js/shared/api.js"></script>
-<script src="js/shared/i18n.js"></script>
-<script src="js/shared/utils.js"></script>
-<script src="js/admin-login.js"></script>
-</body>
+    <script src="js/shared/config.js"></script>
+    <script src="js/shared/api.js"></script>
+    <script src="js/shared/i18n.js"></script>
+    <script src="js/shared/utils.js"></script>
+    <script src="js/admin-login.js"></script>
+  </body>
 </html>
